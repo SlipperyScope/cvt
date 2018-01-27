@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GameScenes/Menu.unity
+    guid: d465ad43ebcc0964ea8526dad3fde3db
+  - enabled: 1
+    path: Assets/GameScenes/CarBuilder.unity
+    guid: 21433fed38e37cc45b6cb43d23c79134
+  - enabled: 1
+    path: Assets/GameScenes/Racetrack.unity
+    guid: c8f6b464edb095746b864413cad633e1
+  - enabled: 1
+    path: Assets/Adam.unity
+    guid: 797bc028a05532441bc8cae742057176
