@@ -13,10 +13,12 @@ public class Car_Controls : MonoBehaviour {
 	public float acceleration;
     public float steering;
 	public float speedOfCar;
-	public float topSpeed;
+	public float topSpeed = 10;
 	public int numberOfInvertors;
 	public bool controlsInverted;
 	public int numberOfSprings;
+    public string horizontalName;
+    public string verticalName;
     private Rigidbody2D rb;
 
     void Start () {
@@ -28,13 +30,14 @@ public class Car_Controls : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        float h = -Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = -Input.GetAxis(horizontalName);
+        float v = Input.GetAxis(verticalName);
 
 		if(controlsInverted){
 			h = h * -1;
 			v = v * -1;
 		}
+
 		if(numberOfInvertors % 2 == 1){
 			controlsInverted = true;
 		}else controlsInverted = false;

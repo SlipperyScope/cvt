@@ -298,6 +298,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   steering: 2
+  speedOfCar: 0
+  topSpeed: 0
+  numberOfInvertors: 0
+  controlsInverted: 0
+  numberOfSprings: 0
+  horizontalName: horizontal_p1
+  verticalName: forward_p1
 --- !u!50 &1349155966
 Rigidbody2D:
   serializedVersion: 4
