@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224763662150751682}
+  - component: {fileID: 114382916551346840}
   m_Layer: 5
   m_Name: PartPicker
   m_TagString: Untagged
@@ -70,6 +71,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114382916551346840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267178334988162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df5640180f85ad4788dbadfc6e0e65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partTypes:
+  - {fileID: 1612684747570400, guid: 612bd6fe480605c4fb062074909a8758, type: 2}
+  - {fileID: 1594510215516834, guid: e5b71bce51dc11d468d12e5dd7d643d9, type: 2}
+  - {fileID: 1944704608650202, guid: f5880cbc1aa77d444bd7f9c1c4bacd79, type: 2}
 --- !u!222 &222929696592278432
 CanvasRenderer:
   m_ObjectHideFlags: 1

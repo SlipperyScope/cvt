@@ -9,18 +9,25 @@ public class CarBuilder : MonoBehaviour {
 	public GameObject partPickerContainer;
 	public GameObject PartPlacementTile;
 	public GameObject partPlacementContainer;
+	private bool[,] grid;
+	public List<PartPlacement> parts = new List<PartPlacement>();
 
 	// Use this for initialization
 	void Start () {
 		// Create a part for each player + 2 for some options
 		var startPos = new Vector3(200, 100, 0);
 		var height = this.GetComponent<RectTransform>().rect.height;
+		grid = new bool[playerCount + 2, playerCount + 2];
+
 		for (var i = 0; i < playerCount + 2; i++) {
 			var partPicker = Instantiate(PartPicker);
 			var partPickerSize = partPicker.GetComponent<RectTransform>().rect.height + 5;
-			Debug.Log(partPickerSize);
 			partPicker.transform.SetParent(this.partPickerContainer.transform, false);
-			partPicker.transform.position += new Vector3((i % 2 * -partPickerSize) + partPickerSize*0.75f, -partPickerSize*(i / 2) , 0);
+			partPicker.transform.position += new Vector3(
+				(i % 2 * -partPickerSize) + partPickerSize*0.75f,
+				-partPickerSize*(i / 2),
+				0
+			);
 		}
 
 		// Create a grid (scaled by the number of players)
@@ -36,7 +43,7 @@ public class CarBuilder : MonoBehaviour {
 				tile.transform.localScale -= new Vector3(scaleFactor, scaleFactor, 0);
 
 				var rect = tile.GetComponent<RectTransform>().rect;
-				size = rect.height * (1 - scaleFactor/2) + 5;
+				size = rect.height * (1 - scaleFactor/2) + 15;
 				tile.transform.position += new Vector3(
 					size * i,
 					size * j,
@@ -55,5 +62,39 @@ public class CarBuilder : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	bool PlacementIsValid(CarPart part, uint x, uint y) {
+		// Part needs to fit in the grid
+		if (y + part.height >= grid.Length || y + part.height < 0) {
+			return false;
+		}
+		// Part need to fit in the grid
+		if (x + part.width >= grid.Length || x + part.height < 0) {
+			return false;
+		}
+
+		// Part can't be placed on top of an existing part
+		for (var yCell = y; yCell < y + part.height; yCell++) {
+			for (var xCell = 0; xCell < part.width; xCell++) {
+				if (grid[xCell, yCell]) return false;
+			}
+		}
+
+		return true;
+	}
+
+	void PlacePart(CarPart part, uint x, uint y) {
+		if (PlacementIsValid(part, x, y)) {
+			// Add a part with coordinates to the list of parts
+			parts.Add(new PartPlacement(part, x, y));
+
+			// Update the grid so parts can't be placed on top of each other
+			for (var yCell = 0; yCell < part.height; yCell++) {
+				for (var xCell = 0; xCell < part.width; xCell++) {
+					grid[xCell + x, yCell + y] = true;
+				}
+			}
+		}
 	}
 }
