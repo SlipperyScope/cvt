@@ -12,19 +12,41 @@ public class Car_Controls : MonoBehaviour {
 
 	public float acceleration;
     public float steering;
+	public float speedOfCar;
+	public float topSpeed;
+	public int numberOfInvertors;
+	public bool controlsInverted;
+	public int numberOfSprings;
     private Rigidbody2D rb;
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+
+		if(numberOfSprings > 0){
+		acceleration += numberOfSprings * 10;
+		}
     }
 
     void FixedUpdate () {
         float h = -Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector2 speed = transform.up * (v * acceleration);
-        rb.AddForce(speed);
+		if(controlsInverted){
+			h = h * -1;
+			v = v * -1;
+		}
+		if(numberOfInvertors % 2 == 1){
+			controlsInverted = true;
+		}else controlsInverted = false;
 
+
+
+        Vector2 speed = transform.up * (v * acceleration);
+
+		speedOfCar = rb.velocity.magnitude;
+		if(speedOfCar<topSpeed){
+        rb.AddForce(speed);
+		}
         float direction = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up));
         if(direction >= 0.0f) {
             rb.rotation += h * steering * (rb.velocity.magnitude / 5.0f);
@@ -53,5 +75,9 @@ public class Car_Controls : MonoBehaviour {
         Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(relativeForce), Color.red);
 
         rb.AddForce(rb.GetRelativeVector(relativeForce));
+
+		
+
+
     }
 }
