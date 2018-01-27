@@ -19,13 +19,18 @@ public class HandCursor : MonoBehaviour {
 	public bool isOpen = true;
 	public CarPart part;
 
-	private bool grabbing = false;
-
 	public GameObject openHandSprite;
 	public GameObject closedHandSprite;
 
-	public HandCursor(Color color) {
+	public string inputX;
+	public string inputY;
+
+	private bool grabbing = false;
+
+	public HandCursor(Color color, string inputX, string inputY) {
 		this.color = color;
+		this.inputX = inputX;
+		this.inputY = inputY;
 	}
 
 	// Use this for initialization
@@ -33,7 +38,7 @@ public class HandCursor : MonoBehaviour {
 		closedHandSprite.SetActive(false);
 		closedHandSprite.GetComponent<Image>().color = color;
 		openHandSprite.GetComponent<Image>().color = color;
-		InvokeRepeating("RandomizeColor", 1, 1);
+		RandomizeColor();
 	}
 
 	void RandomizeColor() {
@@ -50,6 +55,15 @@ public class HandCursor : MonoBehaviour {
 		if (Input.GetMouseButtonUp(0) && grabbing) {
 			grabbing = false;
 		}
+
+		MoveCursor();
+	}
+
+	void MoveCursor() {
+		float speed = 15;
+		Debug.Log("X:" + Input.GetAxis(inputX) * speed);
+		Debug.Log("Y:" + Input.GetAxis(inputY) * speed);
+		this.transform.position += new Vector3(Input.GetAxis(inputX) * speed, Input.GetAxis(inputY) * speed, 0);
 	}
 
 	void Grab() {

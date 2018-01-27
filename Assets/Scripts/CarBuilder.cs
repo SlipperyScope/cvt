@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CarBuilder : MonoBehaviour {
 
-	public uint playerCount = 4;
+	public uint playerCount = 2;
 	public GameObject PartPicker;
 	public GameObject partPickerContainer;
 	public GameObject PartPlacementTile;
@@ -34,16 +35,14 @@ public class CarBuilder : MonoBehaviour {
 		// 4 x 4
 		// 5 x 5
 		// 6 x 6
-		float scaleFactor = playerCount * 0.05f + 0.2f;
 		float size = 0;
 		for (var i = 0; i < playerCount + 2; i++) {
 			for (var j = 0; j < playerCount + 2; j++) {
 				var tile = Instantiate(PartPlacementTile);
 				tile.transform.SetParent(this.partPlacementContainer.transform, false);
-				tile.transform.localScale -= new Vector3(scaleFactor, scaleFactor, 0);
 
 				var rect = tile.GetComponent<RectTransform>().rect;
-				size = rect.height * (1 - scaleFactor/2) + 15;
+				size = rect.height;
 				tile.transform.position += new Vector3(
 					size * i,
 					size * j,
