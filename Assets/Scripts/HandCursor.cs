@@ -25,6 +25,12 @@ public class HandCursor : MonoBehaviour {
 	public GameObject closedHandSprite;
 	public PartPicker[] partOptions = new PartPicker[0];
 	public PartPlacementTile[] tileOptions = new PartPlacementTile[0];
+	private bool isDone = false;
+	public bool finished {
+		get {
+			return isDone;
+		}
+	}
 
 	public string inputX;
 	public string inputY;
@@ -53,25 +59,29 @@ public class HandCursor : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis(inputAction) > 0 && !grabbing && !part) {
-			grabbing = true;
-			Grab();
-		}
+		if (!isDone) {
+			if (Input.GetAxis(inputAction) > 0 && !grabbing && !part) {
+				grabbing = true;
+				Grab();
+			}
 
-		if (Input.GetAxis(inputAction) == 0 && grabbing) {
-			grabbing = false;
-		}
+			if (Input.GetAxis(inputAction) == 0 && grabbing) {
+				grabbing = false;
+			}
 
-		MoveCursor();
+			MoveCursor();
+		}
 	}
 
 	void LateUpdate() {
-		if (part) {
-			Placement(Input.GetAxis(inputAction) > 0);
-		}
+		if (!isDone) {
+			if (part) {
+				Placement(Input.GetAxis(inputAction) > 0);
+			}
 
-		if (!part) {
-			CheckPartOptions();
+			if (!part) {
+				CheckPartOptions();
+			}
 		}
 	}
 
@@ -105,8 +115,10 @@ public class HandCursor : MonoBehaviour {
 				if (success) {
 					// Add part to grid
 					part = null;
+					isDone = true;
+					closedHandSprite.SetActive(false);
+					openHandSprite.SetActive(false);
 					Destroy(partSprite);
-					OpenHand();
 				}
 			}
 		}
@@ -120,7 +132,6 @@ public class HandCursor : MonoBehaviour {
 
 	void MoveCursor() {
 		float speed = 15;
-		Debug.Log(inputX + ": " + Input.GetAxis(inputX) + ", " + inputY + ": " + Input.GetAxis(inputY) + ", " + inputAction + ": " + Input.GetAxis(inputAction));
 		this.transform.position += new Vector3(Input.GetAxis(inputX) * speed, Input.GetAxis(inputY) * speed, 0);
 	}
 
