@@ -30,6 +30,10 @@ public class Car_Controls : MonoBehaviour {
     public string horizontalName;
     public string verticalName;
 	public string boostName;
+	public string hornButtonName;
+
+	public AudioSource audio;
+	public AudioClip boopSound;
 
     private Rigidbody2D rb;
 
@@ -47,6 +51,7 @@ public class Car_Controls : MonoBehaviour {
 		if( numberOfNitroCharges > 0 ){
 			canUseNitro = true;
 		}
+		AudioSource audio = GetComponent<AudioSource>();
     }
 
 	private void applyBoost(){
@@ -67,6 +72,11 @@ public class Car_Controls : MonoBehaviour {
         float h = -Input.GetAxis(horizontalName);
         float v = Input.GetAxis(verticalName);
 		float boostKeyIsPressed = Input.GetAxis(boostName);
+		float hornKeyIsPressed = Input.GetAxis(hornButtonName);
+
+		if(hornKeyIsPressed != 0){
+			audio.Play();
+		}
 		
 		if(boostKeyIsPressed != 0 & canUseNitro){
 			applyBoost();
