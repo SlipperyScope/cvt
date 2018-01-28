@@ -27,12 +27,12 @@ public class Car_Controls : MonoBehaviour {
 	public bool slickTiresExist;
 	public bool offRoadTiresExist;
 	public bool combustionBlockIsInstalled;
+	public bool hornIsEquiped;
     public string horizontalName;
     public string verticalName;
 	public string boostName;
 	public string hornButtonName;
 
-	public AudioSource audio;
 	public AudioClip boopSound;
 
     private Rigidbody2D rb;
@@ -51,7 +51,6 @@ public class Car_Controls : MonoBehaviour {
 		if( numberOfNitroCharges > 0 ){
 			canUseNitro = true;
 		}
-		AudioSource audio = GetComponent<AudioSource>();
     }
 
 	private void applyBoost(){
@@ -74,14 +73,15 @@ public class Car_Controls : MonoBehaviour {
 		float boostKeyIsPressed = Input.GetAxis(boostName);
 		float hornKeyIsPressed = Input.GetAxis(hornButtonName);
 
-		if(hornKeyIsPressed != 0){
-			audio.Play();
+		if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
+			GetComponent<AudioSource>().Play();
 		}
 		
 		if(boostKeyIsPressed != 0 & canUseNitro){
 			applyBoost();
 			Invoke("resetBoost",2);
 		}
+
 
 		if(slickTiresExist & offRoadTiresExist){
 			rb.drag = 3;
@@ -115,6 +115,9 @@ public class Car_Controls : MonoBehaviour {
 		if( numberOfPulseCubes > 0 ){
 			//code goes here.
 		}
+
+
+		//Car Control Code Starts Here.
 
         Vector2 speed = transform.up * (v * acceleration);
 
