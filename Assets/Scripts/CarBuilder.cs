@@ -22,6 +22,38 @@ public class CarBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// Remove cursors for inactive players
+		var cursorList = new List<HandCursor>(cursors);
+		if (!GameData.hasPlayer1) {
+			var cursor = cursorList.Find(c => c.PlayerNumber == 1);
+			if (cursor != null) {
+				cursorList.Remove(cursor);
+				cursor.MarkComplete();
+			}
+		}
+		if (!GameData.hasPlayer2) {
+			var cursor = cursorList.Find(c => c.PlayerNumber == 2);
+			if (cursor != null) {
+				cursorList.Remove(cursor);
+				cursor.MarkComplete();
+			}
+		}
+		if (!GameData.hasPlayer3) {
+			var cursor = cursorList.Find(c => c.PlayerNumber == 3);
+			if (cursor != null) {
+				cursorList.Remove(cursor);
+				cursor.MarkComplete();
+			}
+		}
+		if (!GameData.hasPlayer4) {
+			var cursor = cursorList.Find(c => c.PlayerNumber == 4);
+			if (cursor != null) {
+				cursorList.Remove(cursor);
+				cursor.MarkComplete();
+			}
+		}
+		cursors = cursorList.ToArray();
+
 		// Create a part for each player + 2 for some options
 		var pickers = new List<PartPicker>();
 		var height = this.GetComponent<RectTransform>().rect.height;

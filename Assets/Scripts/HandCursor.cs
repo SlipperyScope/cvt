@@ -5,21 +5,11 @@ using UnityEngine.UI;
 
 public class HandCursor : MonoBehaviour {
 
-	private Color _color = Color.white;
-	public Color color {
-		get {
-			return _color;
-		}
-		set {
-			_color = value;
-			closedHandSprite.GetComponent<Image>().color = value;
-			openHandSprite.GetComponent<Image>().color = value;
-		}
-	}
 	public bool isOpen = true;
 	public CarPart part;
 	private GameObject partSprite;
 	public CarBuilder carBuilder;
+	public uint PlayerNumber = 1;
 
 	public GameObject openHandSprite;
 	public GameObject closedHandSprite;
@@ -32,29 +22,27 @@ public class HandCursor : MonoBehaviour {
 		}
 	}
 
-	public string inputX;
-	public string inputY;
-	public string inputAction;
+	string inputX {
+		get {
+			return "MenuHP" + PlayerNumber;
+		}
+	}
+	string inputY {
+		get {
+			return "MenuVP" + PlayerNumber;
+		}
+	}
+	string inputAction {
+		get {
+			return "MenuActionP" + PlayerNumber;
+		}
+	}
 
 	private bool grabbing = false;
-
-	public HandCursor(Color color, uint playerNumber) {
-		this.color = color;
-		this.inputX = "MenuHP" + playerNumber;
-		this.inputY = "MenuVP" + playerNumber;
-		this.inputAction = "MenuActionP" + playerNumber;
-	}
 
 	// Use this for initialization
 	void Start () {
 		closedHandSprite.SetActive(false);
-		closedHandSprite.GetComponent<Image>().color = color;
-		openHandSprite.GetComponent<Image>().color = color;
-		RandomizeColor();
-	}
-
-	void RandomizeColor() {
-		color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
 	}
 
 	// Update is called once per frame
@@ -115,13 +103,19 @@ public class HandCursor : MonoBehaviour {
 				if (success) {
 					// Add part to grid
 					part = null;
-					// isDone = true;
+					isDone = true;
 					closedHandSprite.SetActive(false);
 					openHandSprite.SetActive(false);
 					Destroy(partSprite);
 				}
 			}
 		}
+	}
+
+	public void MarkComplete() {
+		isDone = true;
+		closedHandSprite.SetActive(false);
+		openHandSprite.SetActive(false);
 	}
 
 	void CheckPartOptions() {
