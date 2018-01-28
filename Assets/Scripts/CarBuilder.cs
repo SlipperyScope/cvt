@@ -147,7 +147,7 @@ public class CarBuilder : MonoBehaviour {
 
 			// Correct for tile size
 			sprite.transform.position -= new Vector3(
-				(part.width - 1) * (size / 2),
+				(part.width - 1) * (size / 2) * -1,
 				(part.height - 1) * (size / 2),
 				0
 			);
