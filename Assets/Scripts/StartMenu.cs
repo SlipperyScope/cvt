@@ -9,10 +9,6 @@ public class StartMenu : MonoBehaviour {
     private bool hasPlayer2 = false;
     private bool hasPlayer3 = false;
     private bool hasPlayer4 = false;
-    private bool axis1Free = true;
-    private bool axis2Free = true;
-    private bool axis3Free = true;
-    private bool axis4Free = true;
     private GameObject square1;
     private GameObject square2;
     private GameObject square3;
