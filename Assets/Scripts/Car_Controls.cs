@@ -10,39 +10,101 @@ public class Car_Controls : MonoBehaviour {
 		
 	}
 
-	public float acceleration;
+	public int health = 100;
+	public float acceleration = 50;
     public float steering;
 	public float speedOfCar;
-	public float topSpeed = 10;
+	public float topSpeed;
 	public int numberOfInvertors;
 	public bool controlsInverted;
+	public bool isDead = false;
 	public int numberOfSprings;
+	public int numberOfHydrogenCells;
+	public int numberOfHearts;
+	public int numberOfPulseCubes;
+	public bool canUseNitro;
+	public int numberOfNitroCharges;
+	public bool slickTiresExist;
+	public bool offRoadTiresExist;
+	public bool combustionBlockIsInstalled;
     public string horizontalName;
     public string verticalName;
+	public string boostName;
+
     private Rigidbody2D rb;
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
 
 		if(numberOfSprings > 0){
-		acceleration += numberOfSprings * 10;
+			topSpeed += numberOfSprings * 10;
+		}
+		
+		if(numberOfHydrogenCells > 0 ){
+			acceleration += numberOfHydrogenCells * 10;
+		}
+
+		if( numberOfNitroCharges > 0 ){
+			canUseNitro = true;
 		}
     }
+
+	private void applyBoost(){
+		acceleration += 100 * numberOfNitroCharges;
+		canUseNitro = false;
+	}
+	private void resetBoost(){
+		acceleration = 50;
+	}
+
+	private bool checkIfOddNumbersOfItemsExist(int numberOfItems){
+		if(numberOfItems % 2 == 1){
+			return true;
+		}else return false;
+	}
 
     void FixedUpdate () {
         float h = -Input.GetAxis(horizontalName);
         float v = Input.GetAxis(verticalName);
+		float boostKeyIsPressed = Input.GetAxis(boostName);
+		
+		if(boostKeyIsPressed != 0 & canUseNitro){
+			applyBoost();
+			Invoke("resetBoost",2);
+		}
 
-		if(controlsInverted){
+		if(slickTiresExist & offRoadTiresExist){
+			rb.drag = 3;
+			rb.angularDrag=2;
+		}else if(slickTiresExist & !offRoadTiresExist){
+			rb.drag = 2;//normal 3
+			rb.angularDrag=1;
+		}else if(!slickTiresExist & offRoadTiresExist){
+			rb.drag = 4;
+			rb.angularDrag = 3;
+		}else  if(!slickTiresExist & !offRoadTiresExist){
+			rb.drag = 3;
+			rb.angularDrag=2;
+		}
+
+		if(combustionBlockIsInstalled){
+			//Detect if we contact fire, if so EXPLODE
+		}
+
+		if(checkIfOddNumbersOfItemsExist(numberOfInvertors)){
 			h = h * -1;
 			v = v * -1;
 		}
 
-		if(numberOfInvertors % 2 == 1){
-			controlsInverted = true;
-		}else controlsInverted = false;
+		if( health <= 0 & numberOfHearts > 0){
+			health = 100;
+			numberOfHearts--;
+			//We will need to add reseting the car here.
+		}else if (health <= 0 & numberOfHearts <= 0){isDead = true;}
 
-
+		if( numberOfPulseCubes > 0 ){
+			//code goes here.
+		}
 
         Vector2 speed = transform.up * (v * acceleration);
 
