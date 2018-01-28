@@ -26,4 +26,9 @@ public class GameData : MonoBehaviour {
 
         return numPlayers;
     }
+
+    static public bool haveWinner()
+    {
+        return playerScore1 >= 50 || playerScore2 >= 50 || playerScore3 >= 50 || playerScore4 >= 50;
+    }
 }

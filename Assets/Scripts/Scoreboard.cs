@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Scoreboard : MonoBehaviour {
     [SerializeField]
@@ -21,14 +22,21 @@ public class Scoreboard : MonoBehaviour {
     private Text playerScore3;
     [SerializeField]
     private Text playerScore4;
-    //public float score = 0;
-    //public int killCount = 0;
+
+    public Text GameoverText;
 
     private string[] texts;
     private int[] scores;
 
     void Start()
     {
+        if (GameData.haveWinner())
+        {
+            GameoverText.enabled = true;
+        } else
+        {
+            GameoverText.enabled = false;
+        }
         int numPlayers = GameData.NumPlayers();
         texts  = new string[numPlayers];
         scores = new int[numPlayers];
@@ -110,5 +118,15 @@ public class Scoreboard : MonoBehaviour {
     {
         if (Input.GetKey("escape"))
             Application.Quit();
+
+        if (Input.GetButtonUp("NitroP1") || Input.GetButtonUp("NitroP2") || Input.GetButtonUp("NitroP3") || Input.GetButtonUp("NitroP4"))
+        {
+            changeScene();
+        }
+    }
+
+    private void changeScene()
+    {
+        SceneManager.LoadScene(GameData.haveWinner() ? "Menu" : "CarBuilder");
     }
 }
