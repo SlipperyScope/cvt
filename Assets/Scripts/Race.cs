@@ -26,19 +26,12 @@ public class Race : MonoBehaviour {
 	}
 	
 	void Update () {
-        int numFinished = 0;
-        cars.ForEach(delegate (GameObject c)
+        if ((GameData.numFinished + GameData.numDead) == GameData.NumPlayers())
         {
-            Car_Controls controls = c.GetComponent<Car_Controls>();
-            if (controls.isDead)
-            {
-                numFinished++;
-            }
-        });
-
-        if (numFinished == GameData.NumPlayers())
-        {
+            GameData.numFinished = 0;
+            GameData.numDead = 0;
             SceneManager.LoadScene("Scoreboard");
+            Debug.Log("Scores: " + GameData.playerScore1 + " :: " + GameData.playerScore2);
         }
     }
 }

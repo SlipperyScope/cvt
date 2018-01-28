@@ -203,6 +203,7 @@ MonoBehaviour:
   numberOfInvertors: 0
   controlsInverted: 0
   isDead: 0
+  hasFinished: 0
   numberOfSprings: 0
   numberOfHydrogenCells: 0
   numberOfHearts: 0
@@ -212,12 +213,12 @@ MonoBehaviour:
   slickTiresExist: 0
   offRoadTiresExist: 0
   combustionBlockIsInstalled: 0
+  hornIsEquiped: 0
   horizontalName: HorizontalP2
   verticalName: ForwardP2
   boostName: NitroP2
   hornButtonName: HornP2
-  audio: {fileID: 0}
-  boopSound: {fileID: 0}
+  boopSound: {fileID: 8300000, guid: 440368272b0e0404ab65c2a175bb618e, type: 3}
 --- !u!114 &114148714323376052
 MonoBehaviour:
   m_ObjectHideFlags: 1

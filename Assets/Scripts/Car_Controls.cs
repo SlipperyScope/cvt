@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Car_Controls : MonoBehaviour {
 
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public int health = 100;
 	public float acceleration = 50;
     public float steering;
@@ -18,6 +12,7 @@ public class Car_Controls : MonoBehaviour {
 	public int numberOfInvertors;
 	public bool controlsInverted;
 	public bool isDead = false;
+	public bool hasFinished = false;
 	public int numberOfSprings;
 	public int numberOfHydrogenCells;
 	public int numberOfHearts;
@@ -68,94 +63,121 @@ public class Car_Controls : MonoBehaviour {
 	}
 
     void FixedUpdate () {
-        float h = -Input.GetAxis(horizontalName);
-        float v = Input.GetAxis(verticalName);
-		float boostKeyIsPressed = Input.GetAxis(boostName);
-		float hornKeyIsPressed = Input.GetAxis(hornButtonName);
+        if (!isDeadOrFinished())
+        {
+            float h = -Input.GetAxis(horizontalName);
+            float v = Input.GetAxis(verticalName);
+            float boostKeyIsPressed = Input.GetAxis(boostName);
+            float hornKeyIsPressed = Input.GetAxis(hornButtonName);
 
-		if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
-			GetComponent<AudioSource>().Play();
-		}
-		
-		if(boostKeyIsPressed != 0 & canUseNitro){
-			applyBoost();
-			Invoke("resetBoost",2);
-		}
+		    //if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
+			//    GetComponent<AudioSource>().Play();
+		    //}
+
+            if (boostKeyIsPressed != 0 & canUseNitro)
+            {
+                applyBoost();
+                Invoke("resetBoost", 2);
+            }
+
+            if (slickTiresExist & offRoadTiresExist)
+            {
+                rb.drag = 3;
+                rb.angularDrag = 2;
+            }
+            else if (slickTiresExist & !offRoadTiresExist)
+            {
+                rb.drag = 2;//normal 3
+                rb.angularDrag = 1;
+            }
+            else if (!slickTiresExist & offRoadTiresExist)
+            {
+                rb.drag = 4;
+                rb.angularDrag = 3;
+            }
+            else if (!slickTiresExist & !offRoadTiresExist)
+            {
+                rb.drag = 3;
+                rb.angularDrag = 2;
+            }
+
+            if (combustionBlockIsInstalled)
+            {
+                //Detect if we contact fire, if so EXPLODE
+            }
+
+            if (checkIfOddNumbersOfItemsExist(numberOfInvertors))
+            {
+                h = h * -1;
+                v = v * -1;
+            }
+
+            if (health <= 0 & numberOfHearts > 0)
+            {
+                health = 100;
+                numberOfHearts--;
+                //We will need to add reseting the car here.
+            }
+            else if (health <= 0 & numberOfHearts <= 0)
+            {
+                isDead = true;
+                GameData.numDead++;
+            }
+
+            if (numberOfPulseCubes > 0)
+            {
+                //code goes here.
+            }
 
 
-		if(slickTiresExist & offRoadTiresExist){
-			rb.drag = 3;
-			rb.angularDrag=2;
-		}else if(slickTiresExist & !offRoadTiresExist){
-			rb.drag = 2;//normal 3
-			rb.angularDrag=1;
-		}else if(!slickTiresExist & offRoadTiresExist){
-			rb.drag = 4;
-			rb.angularDrag = 3;
-		}else  if(!slickTiresExist & !offRoadTiresExist){
-			rb.drag = 3;
-			rb.angularDrag=2;
-		}
+            //Car Control Code Starts Here.
 
-		if(combustionBlockIsInstalled){
-			//Detect if we contact fire, if so EXPLODE
-		}
+            Vector2 speed = transform.up * (v * acceleration);
 
-		if(checkIfOddNumbersOfItemsExist(numberOfInvertors)){
-			h = h * -1;
-			v = v * -1;
-		}
+            speedOfCar = rb.velocity.magnitude;
+            if (speedOfCar < topSpeed)
+            {
+                rb.AddForce(speed);
+            }
+            float direction = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up));
+            if (direction >= 0.0f)
+            {
+                rb.rotation += h * steering * (rb.velocity.magnitude / 5.0f);
+                //rb.AddTorque((h * steering) * (rb.velocity.magnitude / 10.0f));
+            }
+            else
+            {
+                rb.rotation -= h * steering * (rb.velocity.magnitude / 5.0f);
+                //rb.AddTorque((-h * steering) * (rb.velocity.magnitude / 10.0f));
+            }
 
-		if( health <= 0 & numberOfHearts > 0){
-			health = 100;
-			numberOfHearts--;
-			//We will need to add reseting the car here.
-		}else if (health <= 0 & numberOfHearts <= 0){isDead = true;}
+            Vector2 forward = new Vector2(0.0f, 0.5f);
+            float steeringRightAngle;
+            if (rb.angularVelocity > 0)
+            {
+                steeringRightAngle = -90;
+            }
+            else
+            {
+                steeringRightAngle = 90;
+            }
 
-		if( numberOfPulseCubes > 0 ){
-			//code goes here.
-		}
+            Vector2 rightAngleFromForward = Quaternion.AngleAxis(steeringRightAngle, Vector3.forward) * forward;
+            Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(rightAngleFromForward), Color.green);
+
+            float driftForce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(rightAngleFromForward.normalized));
+
+            Vector2 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
 
 
-		//Car Control Code Starts Here.
+            Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(relativeForce), Color.red);
 
-        Vector2 speed = transform.up * (v * acceleration);
-
-		speedOfCar = rb.velocity.magnitude;
-		if(speedOfCar<topSpeed){
-        rb.AddForce(speed);
-		}
-        float direction = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up));
-        if(direction >= 0.0f) {
-            rb.rotation += h * steering * (rb.velocity.magnitude / 5.0f);
-            //rb.AddTorque((h * steering) * (rb.velocity.magnitude / 10.0f));
-        } else {
-            rb.rotation -= h * steering * (rb.velocity.magnitude / 5.0f);
-            //rb.AddTorque((-h * steering) * (rb.velocity.magnitude / 10.0f));
+            rb.AddForce(rb.GetRelativeVector(relativeForce));
         }
+    }
 
-        Vector2 forward = new Vector2(0.0f, 0.5f);
-        float steeringRightAngle;
-        if(rb.angularVelocity > 0) {
-            steeringRightAngle = -90;
-        } else {
-            steeringRightAngle = 90;
-        }
-
-        Vector2 rightAngleFromForward = Quaternion.AngleAxis(steeringRightAngle, Vector3.forward) * forward;
-        Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(rightAngleFromForward), Color.green);
-
-        float driftForce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(rightAngleFromForward.normalized));
-
-        Vector2 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
-
-
-        Debug.DrawLine((Vector3)rb.position, (Vector3)rb.GetRelativePoint(relativeForce), Color.red);
-
-        rb.AddForce(rb.GetRelativeVector(relativeForce));
-
-		
-
-
+    public bool isDeadOrFinished()
+    {
+        return isDead || hasFinished;
     }
 }
