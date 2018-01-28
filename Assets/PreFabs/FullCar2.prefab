@@ -215,6 +215,9 @@ MonoBehaviour:
   horizontalName: HorizontalP2
   verticalName: ForwardP2
   boostName: NitroP2
+  hornButtonName: HornP2
+  audio: {fileID: 0}
+  boopSound: {fileID: 0}
 --- !u!114 &114148714323376052
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -227,6 +227,9 @@ MonoBehaviour:
   horizontalName: HorizontalP3
   verticalName: ForwardP3
   boostName: NitroP3
+  hornButtonName: HornP3
+  audio: {fileID: 0}
+  boopSound: {fileID: 0}
 --- !u!114 &114976659200853712
 MonoBehaviour:
   m_ObjectHideFlags: 1
