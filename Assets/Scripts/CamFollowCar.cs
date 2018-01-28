@@ -6,8 +6,6 @@ public class CamFollowCar : MonoBehaviour {
 
     public Transform carLocation;
     private float distanceFromCar = 10.0f;
-    private float distanceDamp = .15f;
-    private Vector3 velocity = Vector3.one;
 
     private void Start()
     {

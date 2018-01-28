@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 81813211221601822, guid: fd9fc95f7c8d2b54b8718626d6274e2d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd9fc95f7c8d2b54b8718626d6274e2d, type: 2}
   m_IsPrefabParent: 0
@@ -349,7 +354,7 @@ GameObject:
   - component: {fileID: 805912184}
   m_Layer: 0
   m_Name: track1_final
-  m_TagString: Untagged
+  m_TagString: track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,6 +822,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 81438018810508386, guid: 0659e7fb27a085246b1ed2bfdc0945b3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0659e7fb27a085246b1ed2bfdc0945b3, type: 2}
   m_IsPrefabParent: 0
@@ -878,6 +888,11 @@ Prefab:
         type: 2}
       propertyPath: boostName
       value: NitroP2
+      objectReference: {fileID: 0}
+    - target: {fileID: 81861395340788258, guid: a646b94f36ce6c941bf6f4c3e077a947,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a646b94f36ce6c941bf6f4c3e077a947, type: 2}

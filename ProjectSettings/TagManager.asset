@@ -9,6 +9,7 @@ TagManager:
   - square3
   - square4
   - bg
+  - track
   layers:
   - Default
   - TransparentFX
