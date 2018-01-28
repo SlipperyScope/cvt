@@ -73,9 +73,5 @@ public class AddCars : MonoBehaviour {
             cam.rect = cameraRects[rectCount++];
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

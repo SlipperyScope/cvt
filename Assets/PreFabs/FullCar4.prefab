@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 50394764599127848}
   - component: {fileID: 114323844400802392}
   - component: {fileID: 70860324158441906}
+  - component: {fileID: 114314224565069998}
   m_Layer: 0
   m_Name: CarP4
   m_TagString: Untagged
@@ -153,8 +154,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
-  m_AngularDrag: 0.05
+  m_LinearDrag: 3
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -183,6 +184,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127639192413310}
   m_Enabled: 1
+--- !u!114 &114314224565069998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611316379791888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e2f18f54c1ddf4bbf21d3f130d25c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114323844400802392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,15 +206,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d5fc8b5cdeb5f48b02665ed939418b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10
+  health: 100
+  acceleration: 50
   steering: 2
   speedOfCar: 0
-  topSpeed: 10
+  topSpeed: 50
   numberOfInvertors: 0
   controlsInverted: 0
+  isDead: 0
   numberOfSprings: 0
+  numberOfHydrogenCells: 0
+  numberOfHearts: 0
+  numberOfPulseCubes: 0
+  canUseNitro: 0
+  numberOfNitroCharges: 0
+  slickTiresExist: 0
+  offRoadTiresExist: 0
+  combustionBlockIsInstalled: 0
   horizontalName: HorizontalP4
   verticalName: ForwardP4
+  boostName: NitroP4
 --- !u!114 &114899538163458332
 MonoBehaviour:
   m_ObjectHideFlags: 1
