@@ -120,6 +120,7 @@ public class HandCursor : MonoBehaviour {
 
 	void MoveCursor() {
 		float speed = 15;
+		Debug.Log(inputX + ": " + Input.GetAxis(inputX) + ", " + inputY + ": " + Input.GetAxis(inputY) + ", " + inputAction + ": " + Input.GetAxis(inputAction));
 		this.transform.position += new Vector3(Input.GetAxis(inputX) * speed, Input.GetAxis(inputY) * speed, 0);
 	}
 
