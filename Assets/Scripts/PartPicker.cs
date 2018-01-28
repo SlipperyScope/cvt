@@ -31,7 +31,7 @@ public class PartPicker : MonoBehaviour {
 	}
 
 	public CarPart PickUp(Vector2 point) {
-		if (checkCollision(point)) {
+		if (checkCollision(point) && !alreadyPicked) {
 			alreadyPicked = true;
 			icon.GetComponent<Image>().color = new Color(1, 1, 1, 0.25f);
 			this.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);

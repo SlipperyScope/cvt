@@ -83,6 +83,17 @@ public class CarBuilder : MonoBehaviour {
 		foreach (var tile in tileGrid) {
 			tile.GetComponent<Image>().color = Color.white;
 		}
+
+		var allDone = true;
+		foreach (var cursor in cursors) {
+			if (!cursor.finished) {
+				allDone = false;
+				break;
+			}
+		}
+		if (allDone) {
+			Debug.Log("Finished!");
+		}
 	}
 
 	bool PlacementIsValid(CarPart part, uint x, uint y) {
@@ -135,7 +146,6 @@ public class CarBuilder : MonoBehaviour {
 			);
 
 			// Correct for tile size
-			Debug.Log(part.width + "  " + part.height);
 			sprite.transform.position -= new Vector3(
 				(part.width - 1) * (size / 2),
 				(part.height - 1) * (size / 2),
