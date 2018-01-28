@@ -83,7 +83,7 @@ public class StartMenu : MonoBehaviour {
                 || (hasPlayer4 && Input.GetAxisRaw("ForwardP4") == 1))
         {
             setNumPlayers();
-            SceneManager.LoadScene("CarBuilder");
+            SceneManager.LoadScene("Racetrack");
         }
 	}
 

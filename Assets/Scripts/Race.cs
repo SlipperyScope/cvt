@@ -31,7 +31,6 @@ public class Race : MonoBehaviour {
             GameData.numFinished = 0;
             GameData.numDead = 0;
             SceneManager.LoadScene("Scoreboard");
-            Debug.Log("Scores: " + GameData.playerScore1 + " :: " + GameData.playerScore2);
         }
     }
 }
