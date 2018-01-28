@@ -9,6 +9,8 @@ public class CarBuilder : MonoBehaviour {
 	public uint playerCount = 2;
 	public PartPicker PartPicker;
 	public GameObject partPickerContainer;
+	public PartPicker wrench;
+
 	public PartPlacementTile PartPlacementTile;
 	public GameObject partPlacementContainer;
 	private bool[,] grid;
@@ -37,6 +39,9 @@ public class CarBuilder : MonoBehaviour {
 			);
 			pickers.Add(partPicker);
 		}
+
+		// Add the wrench as well, which is not in the part picker list
+		pickers.Add(wrench);
 
 		// Create a grid (scaled by the number of players)
 		// 4 x 4
@@ -98,6 +103,8 @@ public class CarBuilder : MonoBehaviour {
 
 	bool PlacementIsValid(CarPart part, uint x, uint y) {
 		// Part needs to fit in the grid
+		bool isWrench = part.partName == "Wrench";
+
 		if (y + part.height > grid.GetLength(1) || y + part.height < 0) {
 			return false;
 		}
@@ -109,7 +116,7 @@ public class CarBuilder : MonoBehaviour {
 		// Part can't be placed on top of an existing part
 		for (var yCell = y; yCell < y + part.height; yCell++) {
 			for (var xCell = x; xCell < x + part.width; xCell++) {
-				if (grid[xCell, yCell]) return false;
+				if (grid[xCell, yCell]) return isWrench;
 			}
 		}
 
@@ -129,40 +136,58 @@ public class CarBuilder : MonoBehaviour {
 
 	public bool PlacePart(CarPart part, uint x, uint y) {
 		if (PlacementIsValid(part, x, y)) {
-			// Add a part with coordinates to the list of parts
-			parts.Add(new PartPlacement(part, x, y));
+			if (part.partName != "Wrench") {
+				// Add a part with coordinates to the list of parts
+				var placement = new PartPlacement(part, x, y);
+				parts.Add(placement);
 
-			var sprite = Instantiate(part.sprite);
-			sprite.transform.SetParent(this.partPlacementContainer.transform, false);
+				var sprite = Instantiate(part.sprite);
+				sprite.transform.SetParent(this.partPlacementContainer.transform, false);
+				placement.sprite = sprite;
 
-			var rect = tileGrid[0,0].GetComponent<RectTransform>().rect;
-			var size = rect.height;
+				var rect = tileGrid[0,0].GetComponent<RectTransform>().rect;
+				var size = rect.height;
 
-			// Correct for position
-			sprite.transform.position += new Vector3(
-				size * x,
-				size * (playerCount + 1 - y),
-				0
-			);
+				// Correct for position
+				sprite.transform.position += new Vector3(
+					size * x,
+					size * (playerCount + 1 - y),
+					0
+				);
 
-			// Correct for tile size
-			sprite.transform.position -= new Vector3(
-				(part.width - 1) * (size / 2) * -1,
-				(part.height - 1) * (size / 2),
-				0
-			);
+				// Correct for tile size
+				sprite.transform.position -= new Vector3(
+					(part.width - 1) * (size / 2) * -1,
+					(part.height - 1) * (size / 2),
+					0
+				);
 
-			// Update the grid so parts can't be placed on top of each other
-			for (var yCell = 0; yCell < part.height; yCell++) {
-				for (var xCell = 0; xCell < part.width; xCell++) {
-					grid[xCell + x, yCell + y] = true;
+				// Update the grid so parts can't be placed on top of each other
+				for (var yCell = 0; yCell < part.height; yCell++) {
+					for (var xCell = 0; xCell < part.width; xCell++) {
+						grid[xCell + x, yCell + y] = true;
+					}
+				}
+			} else {
+				// Remove the part at the coordinates
+				var partToRemove = GetPartAt((int)x, (int)y);
+				if (partToRemove != null) {
+					parts.Remove(partToRemove);
+					Destroy(partToRemove.sprite);
+
+					// Update the grid so parts can be placed here again
+					for (var yCell = 0; yCell < partToRemove.part.height; yCell++) {
+						for (var xCell = 0; xCell < partToRemove.part.width; xCell++) {
+							grid[xCell + partToRemove.x, yCell + partToRemove.y] = false;
+						}
+					}
 				}
 			}
 
 			ResolveGrid();
-
 			return true;
 		}
+
 		return false;
 	}
 
