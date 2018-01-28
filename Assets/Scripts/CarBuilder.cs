@@ -176,16 +176,79 @@ public class CarBuilder : MonoBehaviour {
 			foreach(var neighbor in neighbors) {
 				if (!markedParts.Contains(neighbor)) {
 					// Check if neighbor + part is a synergy
-					Debug.Log("Part: " + part.part.partName + " X: " + neighbor.x + " Y: " + neighbor.y + " Neighbor: " + neighbor.part.partName);
+					// TODO: Make synergies
+					// Debug.Log("Part: " + part.part.partName + " X: " + neighbor.x + " Y: " + neighbor.y + " Neighbor: " + neighbor.part.partName);
 				}
 			}
 		}
 
 		// Sweep the remainder for counts
+		foreach (var part in parts) {
+			markedParts.Add(part);
+			var name = part.part.partName;
+			switch (name) {
+				case "Spring":
+					specs.springs++;
+				break;
+				case "Nitrous":
+					specs.nitrous++;
+				break;
+				case "Lead":
+					specs.weights++;
+				break;
+				case "MagnetPos":
+					specs.magnetsPositive++;
+				break;
+				case "MagnetNeg":
+					specs.magnetsNegative++;
+				break;
+				case "Inverter":
+					specs.inverters++;
+				break;
+				case "PulseCube":
+					specs.pulseCubes++;
+				break;
+				case "Horn":
+					specs.horns++;
+				break;
+				case "SlickTires":
+					specs.slickTires++;
+				break;
+				case "TreadedTires":
+					specs.treadedTires++;
+				break;
+				case "Spikes":
+					specs.spikes++;
+				break;
+				case "HydrogenCell":
+					specs.hydrogenCells++;
+				break;
+				case "CombustionBlock":
+					specs.combustionBlocks++;
+				break;
+				case "Heart":
+					specs.hearts++;
+				break;
+				case "TrailerHitch":
+					specs.trailerHitches++;
+				break;
+			}
+		}
 
 		// Compute drift
+		var allWeights = parts.FindAll(p => p.part.partName == "Lead");
+		float drift = 0;
+		float center = ((float)grid.GetLength(0) - 1) / 2;
 
-		// Compute polarity
+		// Add/Subtract based on distance from center, e.g., [ -2, -1, 0, 1, 2 ] [ -3, -2, -1, 1, 2, 3 ]
+		foreach (var weight in allWeights) {
+			float offset = (int)weight.x - center;
+			if (offset < 0) offset = Mathf.Floor(offset);
+			if (offset > 0) offset = Mathf.Ceil(offset);
+			drift += offset;
+		}
+
+		specs.driftCoefficient = drift;
 
 		return specs;
 	}
