@@ -22,6 +22,22 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: HorizontalP1
+    descriptiveName: Controller 1
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: HorizontalP2
     descriptiveName: 
     descriptiveNegativeName: 
@@ -38,37 +54,53 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: HorizontalP3
-    descriptiveName: 
+    m_Name: HorizontalP2
+    descriptiveName: Controller 2
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: HorizontalP3
+    descriptiveName: Controller 3
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 3
   - serializedVersion: 3
     m_Name: HorizontalP4
-    descriptiveName: 
+    descriptiveName: Controller 4
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 4
   - serializedVersion: 3
     m_Name: ForwardP1
     descriptiveName: 
@@ -84,6 +116,22 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: ForwardP1
+    descriptiveName: Controller 1
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.2
+    sensitivity: 3
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 2
     joyNum: 1
   - serializedVersion: 3
     m_Name: ForwardP2
@@ -102,36 +150,52 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: ForwardP3
-    descriptiveName: 
+    m_Name: ForwardP2
+    descriptiveName: Controller 2
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
-    dead: 0.001
+    dead: 0.2
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 0
+    axis: 2
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: ForwardP3
+    descriptiveName: Controller 3
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.2
+    sensitivity: 3
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 2
     joyNum: 3
   - serializedVersion: 3
     m_Name: ForwardP4
-    descriptiveName: 
+    descriptiveName: Controller 4
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
-    dead: 0.001
+    dead: 0.2
     sensitivity: 3
     snap: 1
-    invert: 0
+    invert: 1
     type: 2
-    axis: 0
+    axis: 2
     joyNum: 4
   - serializedVersion: 3
     m_Name: HornP1
@@ -139,6 +203,22 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left ctrl
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: HornP1
+    descriptiveName: Controller 1
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 2
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -164,13 +244,29 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
-    m_Name: HornP3
-    descriptiveName: 
+    m_Name: HornP2
+    descriptiveName: Controller 2
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick button 2
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: HornP3
+    descriptiveName: Controller 3
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 2
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -183,10 +279,10 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: HornP4
-    descriptiveName: 
+    descriptiveName: Controller 4
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick button 2
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -214,6 +310,22 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: NitroP1
+    descriptiveName: Controller 1
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: NitroP2
     descriptiveName: 
     descriptiveNegativeName: 
@@ -230,11 +342,27 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: NitroP3
-    descriptiveName: 
+    m_Name: NitroP2
+    descriptiveName: Controller 2
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: NitroP3
+    descriptiveName: Controller 3
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -247,10 +375,10 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: NitroP4
-    descriptiveName: 
+    descriptiveName: Controller 4
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
