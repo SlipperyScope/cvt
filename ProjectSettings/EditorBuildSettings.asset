@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Adam.unity
     guid: 797bc028a05532441bc8cae742057176
+  - enabled: 1
+    path: Assets/GameScenes/Scoreboard.unity
+    guid: e07415ebd3776174f80047aba78baf36
