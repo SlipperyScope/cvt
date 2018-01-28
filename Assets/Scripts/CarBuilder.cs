@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CarBuilder : MonoBehaviour {
 
@@ -130,6 +131,8 @@ public class CarBuilder : MonoBehaviour {
 		}
 		if (allDone) {
 			Debug.Log("Finished!");
+			GameData.Spec = ResolveGrid();
+			SceneManager.LoadScene("Racetrack");
 		}
 	}
 
@@ -216,7 +219,6 @@ public class CarBuilder : MonoBehaviour {
 				}
 			}
 
-			ResolveGrid();
 			return true;
 		}
 

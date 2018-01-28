@@ -15,6 +15,7 @@ public class GameData : MonoBehaviour {
 
     static public int numFinished = 0;
     static public int numDead = 0;
+    static public CarSpecs Spec;
 
     static public int NumPlayers()
     {
