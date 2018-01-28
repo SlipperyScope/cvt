@@ -13,6 +13,9 @@ public class GameData : MonoBehaviour {
     static public int playerScore3 = 0;
     static public int playerScore4 = 0;
 
+    static public int numFinished = 0;
+    static public int numDead = 0;
+
     static public int NumPlayers()
     {
         int numPlayers = 0;
