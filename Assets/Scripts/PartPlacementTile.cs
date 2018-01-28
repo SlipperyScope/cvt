@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarPart : MonoBehaviour {
+public class PartPlacementTile : MonoBehaviour {
 
-	public uint width = 1;
-	public uint height = 1;
+	public uint x = 0;
+	public uint y = 0;
 	// Use this for initialization
-	public GameObject icon;
-	public GameObject sprite;
 	void Start () {
 
 	}

@@ -8,6 +8,7 @@ TagManager:
   - square2
   - square3
   - square4
+  - bg
   layers:
   - Default
   - TransparentFX
