@@ -33,54 +33,34 @@ public class StartMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (axis1Free && Input.GetAxis("HorizontalP1") < 0)
+        if (Input.GetButtonDown("NitroP1"))
         {
-            axis1Free = false;
             hasPlayer1 = !hasPlayer1;
             square1.SetActive(hasPlayer1);
         }
-        else if (!axis1Free && Input.GetAxis("HorizontalP1") >= 0)
-        {
-            axis1Free = true;
-        }
 
-        if (axis2Free && Input.GetAxis("HorizontalP2") < 0)
+        if (Input.GetButtonDown("NitroP2"))
         {
-            axis2Free = false;
             hasPlayer2 = !hasPlayer2;
             square2.SetActive(hasPlayer2);
         }
-        else if (!axis2Free && Input.GetAxis("HorizontalP2") >= 0)
-        {
-            axis2Free = true;
-        }
 
-        if (axis3Free && Input.GetAxis("HorizontalP3") < 0)
+        if (Input.GetButtonDown("NitroP3"))
         {
-            axis3Free = false;
             hasPlayer3 = !hasPlayer3;
             square3.SetActive(hasPlayer3);
         }
-        else if (!axis3Free && Input.GetAxis("HorizontalP3") >= 0)
-        {
-            axis3Free = true;
-        }
 
-        if (axis4Free && Input.GetAxis("HorizontalP4") < 0)
+        if (Input.GetButtonDown("NitroP4"))
         {
-            axis4Free = false;
             hasPlayer4 = !hasPlayer4;
             square4.SetActive(hasPlayer4);
         }
-        else if (!axis4Free && Input.GetAxis("HorizontalP4") >= 0)
-        {
-            axis4Free = true;
-        }
 
-        if ((hasPlayer1 && Input.GetAxisRaw("ForwardP1") == 1)
-                || (hasPlayer2 && Input.GetAxisRaw("ForwardP2") == 1)
-                || (hasPlayer3 && Input.GetAxisRaw("ForwardP3") == 1)
-                || (hasPlayer4 && Input.GetAxisRaw("ForwardP4") == 1))
+        if ((hasPlayer1 && Input.GetButtonDown("HornP1"))
+                || (hasPlayer2 && Input.GetButtonDown("HornP2"))
+                || (hasPlayer3 && Input.GetButtonDown("HornP3"))
+                || (hasPlayer4 && Input.GetButtonDown("HornP4")))
         {
             setNumPlayers();
             SceneManager.LoadScene("Racetrack");
