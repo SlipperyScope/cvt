@@ -17,7 +17,7 @@ public class CamFollowCar : MonoBehaviour {
 
     void LateUpdate () {
         Vector3 toPos = carLocation.position + new Vector3(0, 0, -distanceFromCar);
-        transform.position = Vector3.SmoothDamp(transform.position, toPos, ref velocity, distanceDamp);
+        transform.position = toPos;
 
         transform.rotation = Quaternion.Lerp(transform.rotation, carLocation.rotation, Time.deltaTime * 5);
 	}

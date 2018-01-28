@@ -153,8 +153,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
-  m_AngularDrag: 0.05
+  m_LinearDrag: 3
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -194,15 +194,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d5fc8b5cdeb5f48b02665ed939418b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10
+  health: 100
+  acceleration: 50
   steering: 2
   speedOfCar: 0
-  topSpeed: 10
+  topSpeed: 50
   numberOfInvertors: 0
   controlsInverted: 0
+  isDead: 0
   numberOfSprings: 0
+  numberOfHydrogenCells: 0
+  numberOfHearts: 0
+  numberOfPulseCubes: 0
+  canUseNitro: 0
+  numberOfNitroCharges: 0
+  slickTiresExist: 0
+  offRoadTiresExist: 0
+  combustionBlockIsInstalled: 0
   horizontalName: HorizontalP1
   verticalName: ForwardP1
+  boostName: NitroP1
 --- !u!114 &114930435273458252
 MonoBehaviour:
   m_ObjectHideFlags: 1
