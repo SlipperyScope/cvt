@@ -37,80 +37,46 @@ public class Scoreboard : MonoBehaviour {
         {
             GameoverText.enabled = false;
         }
-        int numPlayers = GameData.NumPlayers();
-        texts  = new string[numPlayers];
-        scores = new int[numPlayers];
 
-        int i = 0;
         if (GameData.hasPlayer1)
         {
-            texts[i] = "Player 1 Score:";
-            scores[i] = GameData.playerScore1;
-            i++;
+            playerScore1.text = "" + GameData.playerScore1;
+        }
+        else
+        {
+            playerText1.enabled = false;
+            playerScore1.enabled = false;
+            GameObject.FindGameObjectWithTag("square1").SetActive(false);
         }
         if (GameData.hasPlayer2)
         {
-            texts[i] = "Player 2 Score:";
-            scores[i] = GameData.playerScore2;
-            i++;
-        }
-        if (GameData.hasPlayer3)
-        {
-            texts[i] = "Player 3 Score:";
-            scores[i] = GameData.playerScore3;
-            i++;
-        }
-        if (GameData.hasPlayer4)
-        {
-            texts[i] = "Player 4 Score:";
-            scores[i] = GameData.playerScore4;
-            i++;
-        }
-
-        if (numPlayers >= 1)
-        {
-            playerText1.text = "" + texts[0];
-            playerScore1.text = "" + scores[0];
-        }
-        
-        if (numPlayers >= 2)
-        {
-            playerText2.text = "" + texts[1];
-            playerScore2.text = "" + scores[1];
+            playerScore2.text = "" + GameData.playerScore2;
         }
         else
         {
             playerText2.enabled = false;
-            playerText3.enabled = false;
-            playerText4.enabled = false;
-
             playerScore2.enabled = false;
-            playerScore3.enabled = false;
-            playerScore4.enabled = false;
+            GameObject.FindGameObjectWithTag("square2").SetActive(false);
         }
-
-        if (numPlayers >= 3)
+        if (GameData.hasPlayer3)
         {
-            playerText3.text = "" + texts[2];
-            playerScore3.text = "" + scores[2];
+            playerScore3.text = "" + GameData.playerScore3;
         }
         else
         {
             playerText3.enabled = false;
-            playerText4.enabled = false;
-
             playerScore3.enabled = false;
-            playerScore4.enabled = false; 
+            GameObject.FindGameObjectWithTag("square3").SetActive(false);
         }
-
-        if (numPlayers == 4)
+        if (GameData.hasPlayer4)
         {
-            playerText4.text = "" + texts[3];
-            playerScore4.text = "" + scores[3];
-        } else
+            playerScore4.text = "" + GameData.playerScore4;
+        }
+        else
         {
             playerText4.enabled = false;
-            playerScore4.enabled = false; 
+            playerScore4.enabled = false;
+            GameObject.FindGameObjectWithTag("square4").SetActive(false);
         }
     }
 

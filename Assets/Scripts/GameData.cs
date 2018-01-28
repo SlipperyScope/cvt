@@ -6,7 +6,7 @@ public class GameData : MonoBehaviour {
     static public bool hasPlayer1 = true;
     static public bool hasPlayer2 = true;
     static public bool hasPlayer3 = false;
-    static public bool hasPlayer4 = false;
+    static public bool hasPlayer4 = true;
 
     static public int playerScore1 = 0;
     static public int playerScore2 = 0;
