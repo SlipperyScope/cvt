@@ -326,7 +326,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 719235711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: 0.4, z: 0}
+  m_LocalPosition: {x: -0.9, y: 0.4, z: 2}
   m_LocalScale: {x: 4.298088, y: 2.6612132, z: 1.6251782}
   m_Children: []
   m_Father: {fileID: 0}
@@ -873,6 +873,11 @@ Prefab:
     - target: {fileID: 4784541285459904, guid: a646b94f36ce6c941bf6f4c3e077a947, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051314371410336, guid: a646b94f36ce6c941bf6f4c3e077a947,
+        type: 2}
+      propertyPath: boostName
+      value: NitroP2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a646b94f36ce6c941bf6f4c3e077a947, type: 2}
