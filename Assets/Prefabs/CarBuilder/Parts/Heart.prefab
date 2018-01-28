@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1222814970902692, guid: 1cd46add233a7a142992a0c0cfd9d8e3, type: 2}
   sprite: {fileID: 1883384422007708, guid: 2929b0ce8d24f4640ae7514b43318c8f, type: 2}
+  partName: Heart

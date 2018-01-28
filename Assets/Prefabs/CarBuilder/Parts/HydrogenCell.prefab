@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 2
   icon: {fileID: 1422838098644004, guid: 6c014e82814fa244184659fb4b10d138, type: 2}
   sprite: {fileID: 1035244637787314, guid: 0f29b7d0024545d4c8a59cadb99e45d8, type: 2}
+  partName: HydrogenCell

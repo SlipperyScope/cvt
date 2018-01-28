@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 2
   icon: {fileID: 1157261865370354, guid: df94c507ef52bba46ae67962cb97ee68, type: 2}
   sprite: {fileID: 1726152584474428, guid: b0b79dde08bcf1e4ea75a1a563a8758c, type: 2}
+  partName: Horn

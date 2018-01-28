@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1144861800380106, guid: c7e87c288e9db9c43b960986c8473e96, type: 2}
   sprite: {fileID: 1478356212568674, guid: 95ac040737f79c54bb11e1ec5d8345bd, type: 2}
+  partName: Spikes

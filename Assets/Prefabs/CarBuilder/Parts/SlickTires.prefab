@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1730738993125492, guid: 2aaf6c42e2561e14fba21af99c220f27, type: 2}
   sprite: {fileID: 1388226612041292, guid: 07e39bacabdc91e4289cbcd66f7f6c57, type: 2}
+  partName: SlickTires

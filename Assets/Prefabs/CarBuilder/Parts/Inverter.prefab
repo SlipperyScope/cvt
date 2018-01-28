@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1969076257017976, guid: c18df03dbd771ee4f8d796d4615cacf3, type: 2}
   sprite: {fileID: 1531333343297354, guid: e844926c39c2adf4a9ad8111744065b1, type: 2}
+  partName: Inverter

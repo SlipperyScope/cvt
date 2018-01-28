@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1944704608650202, guid: f5880cbc1aa77d444bd7f9c1c4bacd79, type: 2}
   sprite: {fileID: 1528892418084074, guid: 03cf7fe65b6ace84eb0cc1e7ff2b016e, type: 2}
+  partName: Lead

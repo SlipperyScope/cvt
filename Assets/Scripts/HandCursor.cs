@@ -115,7 +115,7 @@ public class HandCursor : MonoBehaviour {
 				if (success) {
 					// Add part to grid
 					part = null;
-					isDone = true;
+					// isDone = true;
 					closedHandSprite.SetActive(false);
 					openHandSprite.SetActive(false);
 					Destroy(partSprite);

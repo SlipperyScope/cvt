@@ -9,6 +9,7 @@ public class CarPart : MonoBehaviour {
 	// Use this for initialization
 	public GameObject icon;
 	public GameObject sprite;
+	public string partName;
 	void Start () {
 
 	}

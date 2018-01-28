@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 2
   icon: {fileID: 1612684747570400, guid: 612bd6fe480605c4fb062074909a8758, type: 2}
   sprite: {fileID: 1961628659693364, guid: 21ffa54d6c6b29544a39c50c305656b0, type: 2}
+  partName: Spring

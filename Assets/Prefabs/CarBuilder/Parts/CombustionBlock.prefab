@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1009613248999816, guid: 50fea1fe416cfe842856cbed01f20b2a, type: 2}
   sprite: {fileID: 1824709318051868, guid: 7868903b401beae439284020d12b5de4, type: 2}
+  partName: CombustionBlock

@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 2
   icon: {fileID: 1594510215516834, guid: e5b71bce51dc11d468d12e5dd7d643d9, type: 2}
   sprite: {fileID: 1295191611715892, guid: 94f47d14d7de54b45b8a3b6629be8f98, type: 2}
+  partName: Nitrous

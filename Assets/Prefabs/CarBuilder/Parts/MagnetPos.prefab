@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 2
   icon: {fileID: 1047429642971370, guid: 0ae86313692cef54b85e8a9efebb5807, type: 2}
   sprite: {fileID: 1805660606767948, guid: 3d9909674305ea244a135a2036d49cdb, type: 2}
+  partName: MagnetPos

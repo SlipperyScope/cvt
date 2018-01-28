@@ -159,8 +159,61 @@ public class CarBuilder : MonoBehaviour {
 				}
 			}
 
+			ResolveGrid();
+
 			return true;
 		}
 		return false;
+	}
+
+	public CarSpecs ResolveGrid() {
+		List<PartPlacement> markedParts = new List<PartPlacement>();
+		var specs = new CarSpecs();
+
+		// Sweep list for combinations, marking all parts used in them
+		foreach (var part in parts) {
+			var neighbors = GetPartNeighbors(part);
+			foreach(var neighbor in neighbors) {
+				if (!markedParts.Contains(neighbor)) {
+					// Check if neighbor + part is a synergy
+					Debug.Log("Part: " + part.part.partName + " X: " + neighbor.x + " Y: " + neighbor.y + " Neighbor: " + neighbor.part.partName);
+				}
+			}
+		}
+
+		// Sweep the remainder for counts
+
+		// Compute drift
+
+		// Compute polarity
+
+		return specs;
+	}
+
+	private PartPlacement GetPartAt(int x, int y) {
+		return parts.Find(n => x >= n.x && x < n.x + n.part.width && y >= n.y && y < n.y + n.part.height);
+	}
+
+	private HashSet<PartPlacement> GetPartNeighbors(PartPlacement part) {
+		var neighbors = new HashSet<PartPlacement>();
+
+		// Throw this trash away in the morning. Instead do this:
+		// 1. Collect all neighbors (tiles bordering part, respecting width and height; 8, 10, or 12)
+		// 2. Get the part in that tile, if there is one
+		// 3. If there's a part there, add it to the hashmap
+
+		var neighborCoordinates = new List<uint[]>();
+		for (int y = (int)part.y - 1; y <= part.y + part.part.height; y++) {
+			for (int x = (int)part.x - 1; x <= part.x + part.part.width; x++) {
+				if (x >= 0 && x < grid.GetLength(0) && y >= 0 && y < grid.GetLength(1)) {
+					var neighbor = GetPartAt(x, y);
+					if (neighbor != part && neighbor != null) {
+						neighbors.Add(neighbor);
+					}
+				}
+			}
+		}
+
+		return neighbors;
 	}
 }

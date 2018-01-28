@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1625306711364852, guid: 97d32605f0f68ff4699e54151af9ee90, type: 2}
   sprite: {fileID: 1123343269401446, guid: 3a3825fb26706d9409fa0f1206e822f0, type: 2}
+  partName: TrailerHitch

@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1308160793224660, guid: 64aeab79bca3ba74597397794bafa4d9, type: 2}
   sprite: {fileID: 1987673225757778, guid: 9c553349865d49048a811d9b0922a037, type: 2}
+  partName: PulseCube
