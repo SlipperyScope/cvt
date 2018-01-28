@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50010530153408720}
   - component: {fileID: 114395987387937032}
   - component: {fileID: 70601666273074110}
+  - component: {fileID: 114924332604205214}
   m_Layer: 0
   m_Name: CarP1
   m_TagString: Untagged
@@ -214,6 +215,17 @@ MonoBehaviour:
   horizontalName: HorizontalP1
   verticalName: ForwardP1
   boostName: NitroP1
+--- !u!114 &114924332604205214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086040248348106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e2f18f54c1ddf4bbf21d3f130d25c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114930435273458252
 MonoBehaviour:
   m_ObjectHideFlags: 1
