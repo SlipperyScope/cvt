@@ -294,7 +294,7 @@ Prefab:
     - target: {fileID: 114618501946387560, guid: d5ba562c2182f8a4980961f5e7f3f6e0,
         type: 2}
       propertyPath: m_UiScaleMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224735968219899386, guid: d5ba562c2182f8a4980961f5e7f3f6e0,
         type: 2}
@@ -355,6 +355,11 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 224394632821927512, guid: d5ba562c2182f8a4980961f5e7f3f6e0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 61.94519
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5ba562c2182f8a4980961f5e7f3f6e0, type: 2}
