@@ -90,9 +90,9 @@ public class Car_Controls : MonoBehaviour {
             float boostKeyIsPressed = Input.GetAxis(boostName);
             float hornKeyIsPressed = Input.GetAxis(hornButtonName);
 
-		    //if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
-			//    GetComponent<AudioSource>().Play();
-		    //}
+		    if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
+			    GetComponent<AudioSource>().Play();
+		    }
 
             if (boostKeyIsPressed != 0 & canUseNitro)
             {
