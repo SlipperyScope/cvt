@@ -23,12 +23,14 @@ public class Car_Controls : MonoBehaviour {
 	public bool offRoadTiresExist;
 	public bool combustionBlockIsInstalled;
 	public bool hornIsEquiped;
+	public bool carIsMoving = false;
     public string horizontalName;
     public string verticalName;
 	public string boostName;
 	public string hornButtonName;
 
 	public AudioClip boopSound;
+	public AudioClip engineSound;
 
     private Rigidbody2D rb;
     private CarSpecs spec = GameData.Spec;
@@ -90,32 +92,40 @@ public class Car_Controls : MonoBehaviour {
             float boostKeyIsPressed = Input.GetAxis(boostName);
             float hornKeyIsPressed = Input.GetAxis(hornButtonName);
 
-		    if(hornKeyIsPressed != 0 & !GetComponent<AudioSource>().isPlaying & hornIsEquiped){
-			    GetComponent<AudioSource>().Play();
+			if(v != 0){
+				carIsMoving = true;
+			}else carIsMoving = false;
+
+		    if(hornKeyIsPressed != 0 && !GetComponent<AudioSource>().isPlaying && hornIsEquiped){
+			    GetComponent<AudioSource>().PlayOneShot(boopSound);
 		    }
 
-            if (boostKeyIsPressed != 0 & canUseNitro)
+			//if( v != 0  && !GetComponent<AudioSource>().isPlaying){
+			//	GetComponent<AudioSource>().PlayOneShot(engineSound);
+			//}
+
+            if (boostKeyIsPressed != 0 && canUseNitro)
             {
                 applyBoost();
                 Invoke("resetBoost", 2);
             }
 
-            if (slickTiresExist & offRoadTiresExist)
+            if (slickTiresExist && offRoadTiresExist)
             {
                 rb.drag = 3;
                 rb.angularDrag = 2;
             }
-            else if (slickTiresExist & !offRoadTiresExist)
+            else if (slickTiresExist && !offRoadTiresExist)
             {
                 rb.drag = 2;//normal 3
                 rb.angularDrag = 1;
             }
-            else if (!slickTiresExist & offRoadTiresExist)
+            else if (!slickTiresExist && offRoadTiresExist)
             {
                 rb.drag = 4;
                 rb.angularDrag = 3;
             }
-            else if (!slickTiresExist & !offRoadTiresExist)
+            else if (!slickTiresExist && !offRoadTiresExist)
             {
                 rb.drag = 3;
                 rb.angularDrag = 2;
