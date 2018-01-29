@@ -55,3 +55,4 @@ MonoBehaviour:
   height: 1
   icon: {fileID: 1006418128607022, guid: 4acfd8a5cad8b03479ed289c18f5251b, type: 2}
   sprite: {fileID: 1579914979729146, guid: f5d72b5d0d7614b48afc3890bde679ca, type: 2}
+  partName: 
