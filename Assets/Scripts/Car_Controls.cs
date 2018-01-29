@@ -32,9 +32,14 @@ public class Car_Controls : MonoBehaviour {
 
     private Rigidbody2D rb;
     private CarSpecs spec = GameData.Spec;
+    private Vector3 startPos;
+    private Quaternion startRot;
+    private float weightEffect = 0;
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
+        startRot = transform.rotation;
 
         if (spec != null)
         {
@@ -48,7 +53,7 @@ public class Car_Controls : MonoBehaviour {
             numberOfHearts             = (int)spec.hearts;
             numberOfHydrogenCells      = (int)spec.hydrogenCells;
             combustionBlockIsInstalled = spec.combustionBlocks > 0;
-
+            weightEffect               = Mathf.Abs(spec.driftCoefficient) <= 9 ? spec.driftCoefficient / -10 : -0.9f;
         }
 		if(numberOfSprings > 0){
 			topSpeed += numberOfSprings * 10;
@@ -129,9 +134,11 @@ public class Car_Controls : MonoBehaviour {
 
             if (health <= 0 & numberOfHearts > 0)
             {
+                speedOfCar = 0;
+                transform.rotation = startRot;
+                transform.position = startPos;
                 health = 100;
                 numberOfHearts--;
-                //We will need to add reseting the car here.
             }
             else if (health <= 0 & numberOfHearts <= 0)
             {
@@ -155,14 +162,14 @@ public class Car_Controls : MonoBehaviour {
                 rb.AddForce(speed);
             }
             float direction = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up));
-            if (direction >= 0.0f)
+            if (direction > 0.0f)
             {
-                rb.rotation += h * steering * (rb.velocity.magnitude / 5.0f);
+                rb.rotation += (weightEffect + h) * steering * (rb.velocity.magnitude / 5.0f);
                 //rb.AddTorque((h * steering) * (rb.velocity.magnitude / 10.0f));
             }
-            else
+            else if (direction < 0.0f)
             {
-                rb.rotation -= h * steering * (rb.velocity.magnitude / 5.0f);
+                rb.rotation -=  (-weightEffect + h) * steering * (rb.velocity.magnitude / 5.0f);
                 //rb.AddTorque((-h * steering) * (rb.velocity.magnitude / 10.0f));
             }
 
