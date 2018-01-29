@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour {
     static public bool hasPlayer1 = true;
-    static public bool hasPlayer2 = false;
+    static public bool hasPlayer2 = true;
     static public bool hasPlayer3 = false;
     static public bool hasPlayer4 = false;
 

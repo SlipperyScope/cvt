@@ -30,8 +30,9 @@ public class Car_Controls : MonoBehaviour {
 	public string hornButtonName;
 
 	public AudioClip boopSound;
-	public AudioClip engineSound;
 
+	public AudioClip engineSound;
+    public GameObject explosionPrefab;
     private Rigidbody2D rb;
     private CarSpecs spec = GameData.Spec;
     private Vector3 startPos;
@@ -154,6 +155,8 @@ public class Car_Controls : MonoBehaviour {
             {
                 isDead = true;
                 GameData.numDead++;
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                gameObject.SetActive(false);
             }
 
             if (numberOfPulseCubes > 0)
