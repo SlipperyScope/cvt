@@ -1002,6 +1002,11 @@ Prefab:
       propertyPath: hornIsEquiped
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114395987387937032, guid: eed309ff26ee48a448a2b73b96702f67,
+        type: 2}
+      propertyPath: numberOfSprings
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eed309ff26ee48a448a2b73b96702f67, type: 2}
   m_IsPrefabParent: 0

@@ -31,10 +31,25 @@ public class Car_Controls : MonoBehaviour {
 	public AudioClip boopSound;
 
     private Rigidbody2D rb;
+    private CarSpecs spec = GameData.Spec;
 
     void Start () {
         rb = GetComponent<Rigidbody2D>();
 
+        if (spec != null)
+        {
+            numberOfSprings            = (int)spec.springs;
+            numberOfNitroCharges       = (int)spec.nitrous;
+            numberOfInvertors          = (int)spec.inverters;
+            numberOfPulseCubes         = (int)spec.pulseCubes;
+            hornIsEquiped              = spec.horns > 0;
+            slickTiresExist            = spec.slickTires > 0;
+            offRoadTiresExist          = spec.treadedTires > 0;
+            numberOfHearts             = (int)spec.hearts;
+            numberOfHydrogenCells      = (int)spec.hydrogenCells;
+            combustionBlockIsInstalled = spec.combustionBlocks > 0;
+
+        }
 		if(numberOfSprings > 0){
 			topSpeed += numberOfSprings * 10;
 		}
