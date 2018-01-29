@@ -7,7 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class CarBuilder : MonoBehaviour {
 
-	public uint playerCount = 2;
+	public uint playerCount {
+		get {
+			return (uint)GameData.NumPlayers();
+		}
+	}
+
+	public uint gridSize {
+		get {
+			return playerCount + 3;
+		}
+	}
 	public PartPicker PartPicker;
 	public GameObject partPickerContainer;
 	public PartPicker wrench;
@@ -61,8 +71,8 @@ public class CarBuilder : MonoBehaviour {
 		// Create a part for each player + 2 for some options
 		var pickers = new List<PartPicker>();
 		var height = this.GetComponent<RectTransform>().rect.height;
-		grid = new bool[playerCount + 2, playerCount + 2];
-		tileGrid = new PartPlacementTile[playerCount + 2, playerCount + 2];
+		grid = new bool[gridSize, gridSize];
+		tileGrid = new PartPlacementTile[gridSize, gridSize];
 
 		for (var i = 0; i < playerCount + 2; i++) {
 			var partPicker = Instantiate(PartPicker);
@@ -85,24 +95,25 @@ public class CarBuilder : MonoBehaviour {
 		// 6 x 6
 		float size = 0;
 		var tiles = new List<PartPlacementTile>();
-		for (var i = 0; i < playerCount + 2; i++) {
-			for (var j = 0; j < playerCount + 2; j++) {
+		for (var i = 0; i < gridSize; i++) {
+			for (var j = 0; j < gridSize; j++) {
 				var tile = Instantiate(PartPlacementTile);
 				tile.x = (uint)i;
-				tile.y = (uint)(playerCount + 1 - j);
+				tile.y = (uint)(gridSize - 1 - j);
 				tile.transform.SetParent(this.partPlacementContainer.transform, false);
 
 				var rect = tile.GetComponent<RectTransform>().rect;
 				size = rect.height;
 				tile.transform.position += new Vector3(
 					size * i,
-					size * j,
+					size * j - size,
 					0
 				);
-				tileGrid[i, playerCount + 1 - j] = tile;
+				tileGrid[i, gridSize - 1 - j] = tile;
 				tiles.Add(tile);
 			}
 		}
+		//partPlacementContainer.transform.localScale -= new Vector3(0.25f, 0.25f, 0.25f);
 
 		foreach (var cursor in cursors)
 		{
@@ -190,7 +201,7 @@ public class CarBuilder : MonoBehaviour {
 				// Correct for position
 				sprite.transform.position += new Vector3(
 					size * x,
-					size * (playerCount + 1 - y),
+					size * (gridSize - 1 - y),
 					0
 				);
 
@@ -243,7 +254,7 @@ public class CarBuilder : MonoBehaviour {
 			// Correct for position
 			sprite.transform.position += new Vector3(
 				size * placement.x,
-				size * (playerCount + 1 - placement.y),
+				size * (gridSize - 1 - placement.y),
 				0
 			);
 
