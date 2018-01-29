@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameScenes/Racetrack.unity
     guid: c8f6b464edb095746b864413cad633e1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Adam.unity
     guid: 797bc028a05532441bc8cae742057176
   - enabled: 1

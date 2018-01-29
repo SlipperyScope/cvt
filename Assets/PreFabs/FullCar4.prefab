@@ -306,11 +306,15 @@ MonoBehaviour:
   offRoadTiresExist: 0
   combustionBlockIsInstalled: 0
   hornIsEquiped: 0
+  carIsMoving: 0
   horizontalName: HorizontalP4
   verticalName: ForwardP4
   boostName: NitroP4
   hornButtonName: HornP4
   boopSound: {fileID: 8300000, guid: 440368272b0e0404ab65c2a175bb618e, type: 3}
+  engineSound: {fileID: 0}
+  explosionPrefab: {fileID: 1570709457006012, guid: 61f22eadbcb0cd04bac0cf55047e150e,
+    type: 2}
 --- !u!114 &114899538163458332
 MonoBehaviour:
   m_ObjectHideFlags: 1
