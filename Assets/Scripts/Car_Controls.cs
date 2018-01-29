@@ -69,7 +69,7 @@ public class Car_Controls : MonoBehaviour {
     }
 
 	private void applyBoost(){
-		acceleration += 100 * numberOfNitroCharges;
+		acceleration += 50 * numberOfNitroCharges;
 		canUseNitro = false;
 	}
 	private void resetBoost(){
