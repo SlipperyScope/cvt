@@ -373,7 +373,6 @@ public class CarBuilder : MonoBehaviour {
 		// 2. Get the part in that tile, if there is one
 		// 3. If there's a part there, add it to the hashmap
 
-		var neighborCoordinates = new List<uint[]>();
 		for (int y = (int)part.y - 1; y <= part.y + part.part.height; y++) {
 			for (int x = (int)part.x - 1; x <= part.x + part.part.width; x++) {
 				if (x >= 0 && x < grid.GetLength(0) && y >= 0 && y < grid.GetLength(1)) {

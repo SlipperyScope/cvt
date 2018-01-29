@@ -112,20 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partTypes:
-  - {fileID: 114845199782151142, guid: 77763336ede23fe4093001670efa9e93, type: 2}
   - {fileID: 114217314234715064, guid: fe74b91cfe239254db24290469a18c06, type: 2}
   - {fileID: 114518711635487878, guid: 6c63368af4fa73b4c9316233e52eaec7, type: 2}
   - {fileID: 114509064834477958, guid: ae919720218c8494493544bd79f6fa20, type: 2}
   - {fileID: 114387746691602952, guid: a88232510e12cff47893b995953451a2, type: 2}
   - {fileID: 114264160044438250, guid: 74e0ebe2944ed3f4d94d416994dedac8, type: 2}
-  - {fileID: 114660784048269906, guid: cb169eb9b5ee7ba478a150f43e078da6, type: 2}
-  - {fileID: 114820000003954758, guid: 87bfcc7a9ae6f9a4bb7d8e83cc361500, type: 2}
   - {fileID: 114784682590473884, guid: f833b465fa12761489dd140fc809a114, type: 2}
-  - {fileID: 114178964637399324, guid: 3abe2c15131a5fa4c85d1e08fcaf5c00, type: 2}
   - {fileID: 114816158813751334, guid: ac8d08f87f77a7f4e8e5e72b9d0d9d64, type: 2}
-  - {fileID: 114896401627885278, guid: 21b597ecece814c44bcd3082c7a29182, type: 2}
   - {fileID: 114174415364001010, guid: ca52f7ac632877945a60e0a1b3c6753a, type: 2}
-  - {fileID: 114764880643529194, guid: 994c8e4e3ce6d5749b360ea4e1c19254, type: 2}
+  - {fileID: 114924612205981678, guid: 4c8b75c194c7e154587393579291bd9c, type: 2}
   type: {fileID: 0}
   alreadyPicked: 0
   hover: 0
