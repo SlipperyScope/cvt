@@ -16,13 +16,16 @@ public class CarBuilder : MonoBehaviour {
 	public GameObject partPlacementContainer;
 	private bool[,] grid;
 	private PartPlacementTile[,] tileGrid;
-	public List<PartPlacement> parts = new List<PartPlacement>();
+	public List<PartPlacement> parts;
 
 	public GameObject PartSheet;
 	public HandCursor[] cursors;
 
 	// Use this for initialization
 	void Start () {
+		// Bind local parts to the GameData global parts
+		parts = GameData.parts;
+
 		// Remove cursors for inactive players
 		var cursorList = new List<HandCursor>(cursors);
 		if (!GameData.hasPlayer1) {
@@ -114,6 +117,7 @@ public class CarBuilder : MonoBehaviour {
 		this.partPlacementContainer.transform.position -= new Vector3(sizeX, sizeX, 0);
 
 		// Populate the sprite map
+		InitializeGrid();
 	}
 
 	// Update is called once per frame
@@ -223,6 +227,40 @@ public class CarBuilder : MonoBehaviour {
 		}
 
 		return false;
+	}
+
+	void InitializeGrid() {
+		// Place all the parts from the parts list on the board
+		foreach (var placement in parts) {
+			// Put the sprite back on the scren
+			var sprite = Instantiate(placement.part.sprite);
+			sprite.transform.SetParent(this.partPlacementContainer.transform, false);
+			placement.sprite = sprite;
+
+			var rect = tileGrid[0,0].GetComponent<RectTransform>().rect;
+			var size = rect.height;
+
+			// Correct for position
+			sprite.transform.position += new Vector3(
+				size * placement.x,
+				size * (playerCount + 1 - placement.y),
+				0
+			);
+
+			// Correct for tile size
+			sprite.transform.position -= new Vector3(
+				(placement.part.width - 1) * (size / 2) * -1,
+				(placement.part.height - 1) * (size / 2),
+				0
+			);
+
+			// Update the grid so parts can't be placed on top of each other
+			for (var yCell = 0; yCell < placement.part.height; yCell++) {
+				for (var xCell = 0; xCell < placement.part.width; xCell++) {
+					grid[xCell + placement.x, yCell + placement.y] = true;
+				}
+			}
+		}
 	}
 
 	public CarSpecs ResolveGrid() {
