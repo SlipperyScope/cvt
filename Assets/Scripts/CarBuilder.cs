@@ -201,7 +201,7 @@ public class CarBuilder : MonoBehaviour {
 				// Correct for position
 				sprite.transform.position += new Vector3(
 					size * x,
-					size * (gridSize - 1 - y),
+					size * (gridSize - 2 - y),
 					0
 				);
 
@@ -254,7 +254,7 @@ public class CarBuilder : MonoBehaviour {
 			// Correct for position
 			sprite.transform.position += new Vector3(
 				size * placement.x,
-				size * (gridSize - 1 - placement.y),
+				size * (gridSize - 2 - placement.y),
 				0
 			);
 
