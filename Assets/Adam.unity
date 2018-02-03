@@ -849,6 +849,10 @@ Prefab:
       propertyPath: numberOfSprings
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4642298482705112, guid: eed309ff26ee48a448a2b73b96702f67, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 55.4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82834964732588202, guid: eed309ff26ee48a448a2b73b96702f67, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: eed309ff26ee48a448a2b73b96702f67, type: 2}
