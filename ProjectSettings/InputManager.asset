@@ -79,7 +79,7 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.2
-    sensitivity: 3
+    sensitivity: 1
     snap: 1
     invert: 0
     type: 2
@@ -95,12 +95,12 @@ InputManager:
     altPositiveButton: 
     gravity: 3
     dead: 0.2
-    sensitivity: 3
+    sensitivity: 1
     snap: 1
     invert: 0
     type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 4
   - serializedVersion: 3
     m_Name: ForwardP1
     descriptiveName: 
@@ -388,7 +388,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 4
   - serializedVersion: 3
     m_Name: MenuVP1
     descriptiveName: 
