@@ -74,7 +74,7 @@ public class CarBuilder : MonoBehaviour {
 		grid = new bool[gridSize, gridSize];
 		tileGrid = new PartPlacementTile[gridSize, gridSize];
 
-		for (var i = 0; i < playerCount + 2; i++) {
+		for (var i = 0; i < 10; i++) {
 			var partPicker = Instantiate(PartPicker);
 			var partPickerSize = partPicker.GetComponent<RectTransform>().rect.height + 5;
 			partPicker.transform.SetParent(this.partPickerContainer.transform, false);
@@ -106,7 +106,7 @@ public class CarBuilder : MonoBehaviour {
 				size = rect.height;
 				tile.transform.position += new Vector3(
 					size * i,
-					size * j - size,
+					size * j,
 					0
 				);
 				tileGrid[i, gridSize - 1 - j] = tile;
@@ -123,7 +123,7 @@ public class CarBuilder : MonoBehaviour {
 
 		// Position the entire grid so it is roughly centered in the screen aside from the tray
 		// Due to relative resizing of elements, it isn't quite centered. Oh well.
-		var sizeX = size * (playerCount / 2 + 0.5f);
+		var sizeX = size * (gridSize / 2 + 0.5f);
 		var containerRect = this.partPlacementContainer.GetComponent<RectTransform>().rect;
 		this.partPlacementContainer.transform.position -= new Vector3(sizeX, sizeX, 0);
 
@@ -201,7 +201,7 @@ public class CarBuilder : MonoBehaviour {
 				// Correct for position
 				sprite.transform.position += new Vector3(
 					size * x,
-					size * (gridSize - 2 - y),
+					size * (gridSize - 1 - y),
 					0
 				);
 
@@ -252,9 +252,11 @@ public class CarBuilder : MonoBehaviour {
 			var size = rect.height;
 
 			// Correct for position
+			Debug.Log("COORDS: " + placement.x + " " + placement.y);
+			Debug.Log("X: " + placement.x + "Y: " + (gridSize - 1 - placement.y));
 			sprite.transform.position += new Vector3(
 				size * placement.x,
-				size * (gridSize - 2 - placement.y),
+				size * (gridSize - 1 - placement.y),
 				0
 			);
 
