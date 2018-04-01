@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData : MonoBehaviour {
-    static private int winningScore = 10;
+    static private int winningScore = 50;
     static public bool hasPlayer1 = true;
     static public bool hasPlayer2 = true;
     static public bool hasPlayer3 = true;
