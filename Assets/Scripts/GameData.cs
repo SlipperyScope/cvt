@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData : MonoBehaviour {
+    static private int winningScore = 10;
     static public bool hasPlayer1 = true;
     static public bool hasPlayer2 = true;
     static public bool hasPlayer3 = true;
@@ -31,6 +32,24 @@ public class GameData : MonoBehaviour {
 
     static public bool haveWinner()
     {
-        return playerScore1 >= 50 || playerScore2 >= 50 || playerScore3 >= 50 || playerScore4 >= 50;
+        return playerScore1 >= winningScore || playerScore2 >= winningScore || playerScore3 >= winningScore || playerScore4 >= winningScore;
+    }
+
+    static public void resetStats()
+    {
+        hasPlayer1 = false;
+        hasPlayer2 = false;
+        hasPlayer3 = false;
+        hasPlayer4 = false;
+
+        playerScore1 = 0;
+        playerScore2 = 0;
+        playerScore3 = 0;
+        playerScore4 = 0;
+
+        numFinished = 0;
+        numDead = 0;
+        Spec = new CarSpecs();
+        parts = new List<PartPlacement>();
     }
 }

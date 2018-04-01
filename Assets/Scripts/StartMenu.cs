@@ -17,6 +17,7 @@ public class StartMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        GameData.resetStats();
         square1 = GameObject.FindGameObjectWithTag("square1");
         square2 = GameObject.FindGameObjectWithTag("square2");
         square3 = GameObject.FindGameObjectWithTag("square3");
